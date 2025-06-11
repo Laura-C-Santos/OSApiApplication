@@ -4,6 +4,7 @@
  */
 package local.laura.OSApiApplication.api.controller;
 
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import local.laura.OSApiApplication.domain.model.Cliente;
@@ -38,7 +39,7 @@ public class ClienteController {
 
     }
     @PutMapping("/clientes/{clienteID}")
-    public ResponseEntity<Cliente> atualizar(@PathVariable Long clienteID, @RequestBody Cliente cliente) {
+    public ResponseEntity<Cliente> atualizar(@Valid @PathVariable Long clienteID, @RequestBody Cliente cliente) {
         
         if (!clienteRepository.existsById(clienteID)) {
             return ResponseEntity.notFound().build();
@@ -51,12 +52,12 @@ public class ClienteController {
     
    @PostMapping("/clientes")
    @ResponseStatus(HttpStatus.CREATED)
-   public Cliente adicionar(@RequestBody Cliente cliente){
+   public Cliente adicionar(@Valid @RequestBody Cliente cliente){
    
        return clienteRepository.save(cliente);
    }
    @DeleteMapping("/clientes/{clienteID}")
-    public ResponseEntity<Void> excluir(@PathVariable Long clienteID) {
+    public ResponseEntity<Void> excluir( @PathVariable Long clienteID) {
         
         if (!clienteRepository.existsById(clienteID)) {
             return ResponseEntity.notFound().build();
