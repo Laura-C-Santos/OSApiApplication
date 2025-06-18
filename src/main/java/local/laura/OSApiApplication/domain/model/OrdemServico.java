@@ -47,7 +47,7 @@ public class OrdemServico {
         this.preco = preco;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

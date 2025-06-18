@@ -4,6 +4,7 @@
  */
 package local.laura.OSApiApplication.domain.repository;
 
+import java.util.List;
 import local.laura.OSApiApplication.domain.model.OrdemServico;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -11,6 +12,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author ppjatb
  */
-public interface OrdemServicoRepository extends JpaRepository<OrdemServico, Long>{
+public interface OrdemServicoRepository extends JpaRepository<OrdemServico, Long> {
+    
+    OrdemServico findById(long id);
+    
+    @Override
+    List<OrdemServico> findAll();
     
 }
